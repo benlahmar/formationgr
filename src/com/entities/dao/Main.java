@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.entities.Account;
+import com.entities.Profile;
 
 public class Main {
 
@@ -12,10 +13,18 @@ public class Main {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("Appcontext.xml");
 		AccountManager cm=(AccountManager) ctx.getBean("adao");
 		Account a=new Account();
-		a.setLogin("user");
-		a.setPassword("user");
-		a.setRole("user");
+		ProfileManager pm=(ProfileManager) ctx.getBean("pdao");
+		
+		Profile p=new Profile();
+		p.setNom("aziz");
+		
+		pm.store(p);
+		
+		a.setLogin("xyz");
+		a.setProfile(p);
 		cm.store(a);
+		
+		
 		//fin
 
 	}

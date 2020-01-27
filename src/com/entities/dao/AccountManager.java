@@ -44,14 +44,26 @@ public class AccountManager implements IDao<Account, Long>{
 
 	@Override
 	public Account findById(Long k) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session ses = sf.openSession();
+		ses.beginTransaction();
+		Account ac = (Account) ses.get(Account.class, k);
+		ses.getTransaction().commit();
+		ses.close();
+		
+		
+		return ac;
 	}
 
 	@Override
 	public List<Account> all() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session ses = sf.openSession();
+		ses.beginTransaction();
+		List ls = ses.createQuery("from Account ").list();
+		ses.getTransaction().commit();
+		ses.close();
+		return ls;
 	}
 	
 }

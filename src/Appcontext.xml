@@ -38,6 +38,9 @@ value="classpath:com/entities/*.hbm.xml" />
 <property name="sf" ref="sessionFactory"></property>
 </bean>
 
+<bean id="pdao" class="com.entities.dao.ProfileManager">
+<property name="sf" ref="sessionFactory"></property>
+</bean>
 
 
 </beans>
