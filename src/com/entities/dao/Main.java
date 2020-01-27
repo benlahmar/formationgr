@@ -12,9 +12,9 @@ public class Main {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("Appcontext.xml");
 		AccountManager cm=(AccountManager) ctx.getBean("adao");
 		Account a=new Account();
-		a.setLogin("admin");
-		a.setPassword("admin");
-		a.setRole("admin");
+		a.setLogin("user");
+		a.setPassword("user");
+		a.setRole("user");
 		cm.store(a);
 		//fin
 
